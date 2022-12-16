@@ -1,6 +1,6 @@
 #include "monty.h"
 
- int globvar;
+int globvar;
 
 /**
  * push - adding element to stack
@@ -17,8 +17,8 @@ void push(stack_t **stack, unsigned int line_number)
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
 	{
-		printf("Error\n");
 		free(stack);
+		printf("Error\n");
 		exit(EXIT_FAILURE);
 		return;
 	}
@@ -35,17 +35,22 @@ void push(stack_t **stack, unsigned int line_number)
 
 /**
  * pall - print from the start node
- * @stack: the header
- * @line_number: for the error
+ * @stack: linked list
+ * @line_number: line number
+ * Return: void.
  */
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *newnode;
+	stack_t *newnode = NULL;
 	(void)line_number;
 
 	if (*stack == NULL)
+	{
+		printf("Error\n");
+		exit(EXIT_FAILURE);
 		return;
+	}
 	newnode = *stack;
 	while (newnode != NULL)
 	{
@@ -57,4 +62,48 @@ void pall(stack_t **stack, unsigned int line_number)
 		else
 			return;
 	}
+	free(newnode);
+}
+
+/**
+ * pint - print int in top of stack
+ * @stack: linked list
+ * @line_number: line number
+ * Return: void.
+ */
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+		return;
+	}
+	fprintf(stdout, "%i\n", (*stack)->n);
+}
+
+/**
+ * pop - removes first element of stack
+ * @stack: linked list
+ * @line_number: line number
+ * Return: void.
+ */
+
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = NULL;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		tmp = (*stack);
+		(*stack)->prev = NULL;
+	}
+	*stack = (*stack)->next;
+	free(tmp);
 }
