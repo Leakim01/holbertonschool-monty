@@ -39,6 +39,7 @@ void add(stack_t **stack, unsigned int line_number)
         exit(EXIT_FAILURE);
     }
     (*stack)->next->n = (*stack)->next->n + (*stack)->n;
+    pop(stack, line_number);
 }
 
 /**

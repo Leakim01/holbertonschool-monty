@@ -45,12 +45,6 @@ void pall(stack_t **stack, unsigned int line_number)
 	stack_t *newnode = NULL;
 	(void)line_number;
 
-	if (*stack == NULL)
-	{
-		printf("Error\n");
-		exit(EXIT_FAILURE);
-		return;
-	}
 	newnode = *stack;
 	while (newnode != NULL)
 	{

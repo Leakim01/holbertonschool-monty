@@ -3,7 +3,7 @@
 int globvar;
 
 /**
- * get_func - char to function
+ * getfunc - char to function
  * @command: variable to the function
  * @head: node actual
  * @line_number: line number
