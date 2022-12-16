@@ -11,26 +11,26 @@ int globvar;
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *node;
-	(void)line_number;
+stack_t *node;
+(void)line_number;
 
-	node = malloc(sizeof(stack_t));
-	if (node == NULL)
-	{
-		free(stack);
-		printf("Error\n");
-		exit(EXIT_FAILURE);
-		return;
-	}
-	node->n = globvar;
-	node->prev = NULL;
-	node->next = *stack;
-	if (*stack != NULL)
-	{
-		(*stack)->prev = node;
-		node->next = *stack;
-	}
-	*stack = node;
+node = malloc(sizeof(stack_t));
+if (node == NULL)
+{
+free(stack);
+printf("Error\n");
+exit(EXIT_FAILURE);
+return;
+}
+node->n = globvar;
+node->prev = NULL;
+node->next = *stack;
+if (*stack != NULL)
+{
+(*stack)->prev = node;
+node->next = *stack;
+}
+*stack = node;
 }
 
 /**
@@ -42,21 +42,21 @@ void push(stack_t **stack, unsigned int line_number)
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *newnode = NULL;
-	(void)line_number;
+stack_t *newnode = NULL;	
+(void)line_number;
 
-	newnode = *stack;
-	while (newnode != NULL)
-	{
-		printf("%i\n", newnode->n);
-		if (newnode->next != NULL)
-		{
-			newnode = newnode->next;
-		}
-		else
-			return;
-	}
-	free(newnode);
+newnode = *stack;
+while (newnode != NULL)
+{
+printf("%i\n", newnode->n);
+if (newnode->next != NULL)
+{
+newnode = newnode->next;
+}
+else
+return;
+}
+free(newnode);
 }
 
 /**
@@ -68,13 +68,13 @@ void pall(stack_t **stack, unsigned int line_number)
 
 void pint(stack_t **stack, unsigned int line_number)
 {
-	if (*stack == NULL)
-	{
-		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-		return;
-	}
-	fprintf(stdout, "%i\n", (*stack)->n);
+if (*stack == NULL)
+{
+fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+exit(EXIT_FAILURE);
+return;
+}
+fprintf(stdout, "%i\n", (*stack)->n);
 }
 
 /**
@@ -86,18 +86,18 @@ void pint(stack_t **stack, unsigned int line_number)
 
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = NULL;
+stack_t *tmp = NULL;
 
-	if (*stack == NULL)
-	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		tmp = (*stack);
-		(*stack)->prev = NULL;
-	}
-	*stack = (*stack)->next;
-	free(tmp);
+if (*stack == NULL)
+{
+fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+exit(EXIT_FAILURE);
+}
+else
+{
+tmp = (*stack);
+(*stack)->prev = NULL;
+}
+*stack = (*stack)->next;
+free(tmp);
 }

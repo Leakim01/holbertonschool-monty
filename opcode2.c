@@ -11,17 +11,17 @@ int globvar;
 
 void swap(stack_t **stack, unsigned int line_number)
 {
-    int tmp = 0;
+int tmp = 0;
 
-    if (*stack == NULL || ((*stack)->next) == NULL)
-    {
-        fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-        exit(EXIT_FAILURE);
-        return;
-    }
-    tmp = (*stack)->n;
-    (*stack)->n = (*stack)->next->n;
-    (*stack)->next->n = tmp;
+if (*stack == NULL || ((*stack)->next) == NULL)
+{
+fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+return;
+}
+tmp = (*stack)->n;
+(*stack)->n = (*stack)->next->n;
+(*stack)->next->n = tmp;
 }
 
 /**
@@ -33,13 +33,13 @@ void swap(stack_t **stack, unsigned int line_number)
 
 void add(stack_t **stack, unsigned int line_number)
 {
-    if (*stack == NULL || (*stack)->next == NULL)
-    {
-        fprintf(stderr, "L%i: can't add, stack too short\n", line_number);
-        exit(EXIT_FAILURE);
-    }
-    (*stack)->next->n = (*stack)->next->n + (*stack)->n;
-    pop(stack, line_number);
+if (*stack == NULL || (*stack)->next == NULL)
+{
+fprintf(stderr, "L%i: can't add, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+(*stack)->next->n = (*stack)->next->n + (*stack)->n;
+pop(stack, line_number);
 }
 
 /**
@@ -51,6 +51,6 @@ void add(stack_t **stack, unsigned int line_number)
 
 void nop(stack_t **stack, unsigned int line_number)
 {
-    (void)*stack;
-    (void)line_number;
+(void)*stack;
+(void)line_number;
 }
