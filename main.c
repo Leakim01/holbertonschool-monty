@@ -3,7 +3,10 @@
 int globvar;
 
 /**
- *
+ * main - Entry point
+ * @argc: argc
+ * @argv: argv
+ * Return: Success
  */
 
 int main(int argc, char **argv)
@@ -15,6 +18,7 @@ int main(int argc, char **argv)
     char *command;
     char *value;
     int line_number = 1;
+    stack_t *tmp;
 
     if (argc != 2)
     {
@@ -42,5 +46,13 @@ int main(int argc, char **argv)
             line_number++;
         }
     }
+
     fclose(fp);
+    while (head)
+    {
+        tmp = head;
+        head = head->next;
+        free(tmp);
+    }
+    free(line);
 }

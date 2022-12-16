@@ -99,10 +99,10 @@ void pop(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if (*stack != NULL)
+	else
 	{
-		(*stack)->prev = NULL;
 		tmp = (*stack);
+		(*stack)->prev = NULL;
 	}
 	*stack = (*stack)->next;
 	free(tmp);

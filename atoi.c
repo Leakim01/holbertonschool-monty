@@ -3,7 +3,10 @@
 int globvar;
 
 /**
- *
+ * atila - atoi function
+ * @value: the number to push
+ * @line_number: line number
+ * Return: void.
  */
 
 void atila(char *value, int line_number)

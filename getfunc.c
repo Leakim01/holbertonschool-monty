@@ -1,8 +1,12 @@
 #include "monty.h"
 
+int globvar;
+
 /**
  * get_func - char to function
- * @x: variable to the function
+ * @command: variable to the function
+ * @head: node actual
+ * @line_number: line number
  * Return: function
  */
 

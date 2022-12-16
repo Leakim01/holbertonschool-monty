@@ -10,14 +10,14 @@ int globvar;
 
 int _isdigit(char *value)
 {
-    int i = 0;
+	int i = 0;
 
-	for (i = 0 ; value[i] ; i++)
+	for (i = 0; value[i]; i++)
 	{
 		if (!(value[0] == '-' || (value[i] >= 48 && value[i] <= 57)))
 		{
-            return(0);
+			return (0);
 		}
 	}
-    return(1);
+	return (1);
 }
