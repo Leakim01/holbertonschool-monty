@@ -34,13 +34,23 @@ int main(int argc, char **argv)
     while ((getline(&line, &len, fp)) != -1)
     {
         command = strtok(line, " \t\n");
-        if (command != NULL)
+        if (command == NULL)
+        {
+            line_number++;
+            continue;
+        }
+        else
         {
             if (strcmp(command, "push") == 0)
             {
                 value = strtok(NULL, " \t\n");
                 if (value != NULL)
                     atila(value, line_number);
+                else
+                {
+                    fprintf(stderr, "L%i: usage: push integer\n", line_number);
+                    exit(EXIT_FAILURE);
+                }
             }
             getfunc(command, &head, line_number);
             line_number++;
