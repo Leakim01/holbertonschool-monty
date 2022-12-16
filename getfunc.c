@@ -33,6 +33,9 @@ void getfunc(char *command, stack_t **head, unsigned int line_number)
         i++;
     }
     if (arr[i].opcode == NULL)
+    {
         fprintf(stderr, "L%i: unknown instruction %s\n", line_number, command);
+        exit(EXIT_FAILURE);
+    }
     return;
 }
